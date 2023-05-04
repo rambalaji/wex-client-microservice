@@ -1,0 +1,25 @@
+server:
+  port: 8083
+
+
+spring:
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        instance-Id: "${spring.application.name}"
+        prefer-ip-address: true
+        health-check-critical-timeout: "1m"
+      config:
+        fail-fast: true
+
+
+  activemq:
+    broker-url: "tcp://ifcs-activemq.zen-qa.apacqa.ec1.wexglobal.com:61616"
+  config:
+    import: "consul:"
+#    import: "consul:localhost:8500/config"
+
+  application:
+    name: @project.artifactId@
